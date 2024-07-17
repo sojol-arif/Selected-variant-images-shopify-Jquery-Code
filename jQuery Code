@@ -1,0 +1,34 @@
+$(".product-form__input").on('click', 'input', function(){
+           $('.d-none').hide();
+          var btnVal = this.value;
+          var btnValLowerCa = btnVal.toLowerCase();
+
+              var mainGal =  $('#Slider-Gallery-template--23040900366604__main');
+              var mainGalAllClass = mainGal.attr('class');
+              var mainGalAllPop=  mainGalAllClass.split(' ').pop();
+              if(!mainGal.hasClass('slider-mobile')){
+                mainGal.addClass('slider-mobile');
+              };
+
+              mainGal.removeClass( mainGalAllPop );
+         
+              var imageList = $('#Slider-Gallery-template--23040900366604__main li');
+              imageList.each(function() {
+                  
+                  // Add Class
+                  var imgAttr = $(this).find('img').attr('alt');
+                  var resultAttr = $( this ).addClass( imgAttr );
+                
+                  // Add Class
+                  $(this).hide();
+
+                  // Remove Class
+                  if( $(this).hasClass( btnValLowerCa ) ){
+                    $(this).show();
+                  }
+                
+              });
+         
+          $('#Slider-Gallery-template--23040900366604__main').addClass( btnValLowerCa );
+           console.log(mainGal);
+      });
